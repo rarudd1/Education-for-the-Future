@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Generic - Hyperspace by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<header id="header">
+    <a href="index.html" class="title">Ruthann Wheeler</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="generic.html" class="active">String Add and Subtract Solution</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <h1 class="major">String Add and Subtract Solution</h1>
+            <p><pre class="brush:java">package com.company;
+package com.company;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class  Main {
+
+    static String addAndSubtract(String s, String t, int k) {
+        int similar = 0;
+        int changes = 0;
+        while ((similar < s.length() & similar < t.length()) &&
+                (s.charAt(similar) == t.charAt(similar))) {
+            similar++;
+        }
+        changes = s.length() - similar;
+        changes = changes + (t.length() - similar);
+        if (changes == k)
+            return "Yes";
+        else if (changes < k) {
+            for (int j = 0; j < similar; j++) {
+                changes += 2;
+                if (changes == k)
+                    return "Yes";
+            }
+            if (changes < k)
+                return "Yes";
+            else return "No";
+        } else
+            return "No";
+    }
+
+    public static void main(String[] args) throws IOException {
+        try (Scanner scanner = new Scanner(new FileReader("tests.txt"))) {
+            int numberOfTest = scanner.nextInt();
+            for (int i = 0; i < numberOfTest; i++) {
+                String first = scanner.next();
+                String second = scanner.next();
+                int numOfChanges = scanner.nextInt();
+                System.out.println(addAndSubtract(first, second, numOfChanges));
+            }
+        }
+    }
+}
+        </pre></p>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Generic - Hyperspace by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<header id="header">
+    <a href="index.html" class="title">Ruthann Wheeler</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="generic.html" class="active">Organizing Ball Containers Solution</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <h1 class="major">Organizing Ball Containers Solution</h1>
+            <p><pre class="brush:java">package com.company;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+public class Main {
+    static String ballswap(long[][] container) {
+        int size = container.length;
+        String result = "Impossible";
+        long[] ballType = new long[size];
+        long[] capacity = new long[size];
+        //Add up the capacity of each container and amount of each ball type
+        for(int i =0; i< size;i++)
+        {
+            for(int j =0; j< container[i].length;j++)
+            {
+                capacity[i] += container[i][j];
+            }
+            for(int j =0; j< container.length; j++)
+            {
+                ballType[i] +=container[j][i];
+            }
+        }
+        //Set a flag for if a match is found
+        boolean found = false;
+        boolean[] used = new boolean[size];
+        for(int i =0; i< size; i++)
+        {
+            used[i] = false;
+        }
+        for(int i =0; i< size; i++)
+        {
+            for(int j =0; j< size; j++)
+            {
+                if(capacity[i] == ballType[j]&& !used[j])
+                {//If a match is found flag that that ballType was already used and break
+                    found = true;
+                    used[j] = true;
+                    break;
+                }
+            }
+            if(found && i== size -1)
+            {//If a match has been found for all possible balls change result
+                result = "Possible";
+                break;
+            }
+            if(!found)
+                break;
+            else
+                found = false;
+        }
+        return(result);
+    }
+    public static void main(String[] args) throws IOException {
+        try (Scanner scanner = new Scanner(new FileReader("tests.txt"))) {
+            int testCases = scanner.nextInt();
+            for(int i=0; i< testCases; i++)
+            {
+                int testSize = scanner.nextInt();
+                long[][] containers = new long[testSize][testSize];
+                for (int j = 0; j < testSize; j++) {
+                        for(int k =0; k< testSize; k++) {
+                        containers[j][k] = scanner.nextInt();
+                        }
+                    }
+                    System.out.println(ballswap(containers));
+            }
+
+        }
+    }
+}
+        </pre></p>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
